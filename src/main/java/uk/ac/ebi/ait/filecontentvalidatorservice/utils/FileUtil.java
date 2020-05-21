@@ -3,11 +3,11 @@ package uk.ac.ebi.ait.filecontentvalidatorservice.utils;
 import uk.ac.ebi.ait.filecontentvalidatorservice.exception.FileHandleException;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.UUID;
 
 public class FileUtil {
 
@@ -16,24 +16,6 @@ public class FileUtil {
 			throw new FileHandleException(FileContentValidatorMessages.CLI_INVALID_REPORT_DIR_ERROR.format(filename));
 
 		return new File(dir, Paths.get(filename).getFileName().toString() + suffix);
-	}
-
-	public static boolean emptyDirectory( File dir )
-	{
-		if (dir == null)
-			return false;
-	    if( dir.exists() )
-	    {
-	        File[] files = dir.listFiles();
-			for (File file : files) {
-				if (file.isDirectory()) {
-					emptyDirectory(file);
-				} else {
-					file.delete();
-				}
-			}
-	    }
-	    return dir.listFiles().length == 0;
 	}
 
 	public static File createOutputDir(File outputDir, String... dirs) {
@@ -74,17 +56,12 @@ public class FileUtil {
 				.replaceAll("(?<=[^_])_+$", "");
 	}
 
-	public static File createTempDir() {
-		try {
-			File folder = File.createTempFile("test", "test");
+	public static File createTempDir(String submissionUUID, String fileUUID) {
+			File folder = new File(String.join("/", "temp", submissionUUID, fileUUID, UUID.randomUUID().toString()));
 
-			assert(folder.delete());
 			assert(folder.mkdirs());
 
 			return folder;
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
 	}
 
 }

@@ -1,0 +1,17 @@
+language: java
+
+jdk:
+  - openjdk11
+
+before_script:
+  - "echo $JAVA_OPTS"
+  - "export JAVA_OPTS='-Xms3G -Xmx4G -XX:+HeapDumpOnOutOfMemoryError'"
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - "$HOME/.gradle/caches/"
+    - "$HOME/.gradle/wrapper/"

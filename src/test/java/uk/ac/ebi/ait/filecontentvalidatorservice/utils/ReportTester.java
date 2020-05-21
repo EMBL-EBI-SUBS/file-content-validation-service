@@ -38,7 +38,7 @@ public class ReportTester {
 
     private static String readFile(Path file) {
         try {
-            return new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
+            return new String (Files.readAllBytes(file), StandardCharsets.UTF_8);
         }
         catch (IOException ex) {
             throw new RuntimeException(ex);
