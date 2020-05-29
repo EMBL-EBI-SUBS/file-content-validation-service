@@ -1,0 +1,30 @@
+= [.ebi-color]#Release Notes#
+:toc: auto
+
+This pages contains links to release notes for DSP's File content validator service.
+
+[[section]]
+== v0.1.3 Release Notes
+
+This brand new file content validator application is a replacement of our previous file content validator that was using 3rd party applications to validate the content correctness of the uploaded raw data files.
+
+This current validator uses the following ENA libraries for validation:
+
+* https://github.com/enasequence/readtools[ENA read tools]
+It is a tool to validate the content of sequence read raw data files.
+* https://github.com/enasequence/sequencetools[ENA Sequencetools]
+SequenceTools is a set of Java tools and APIs for working with sequence data including EMBL-Bank and NCBI flat file parsers and writers and validation and fixing functionality.
+* https://github.com/enasequence/webin-cli-validator[webin-cli-validator]
+Contains common classes which acts as an interface between webin-cli and the context specific validators.
+
+The current version of our validator service only works with sequencing read raw data files for now. The next releases are going to support more file types or data formats.
+
+Here is the list of the currently supported file types:
+
+* BAM: A BAM file (*.bam) is the compressed binary version of a SAM file that is used to represent aligned sequences up to 128 Mb. SAM and BAM formats are described in detail at https://samtools.github.io/hts-specs/SAMv1.pdf.
+* CRAM: CRAM is a format designed by the European Bioinformatics Institute.
+CRAM is a sequencing read file format that is highly space efficient by using reference-based compression of sequence data and offers both lossless and lossy modes of compression.
+It means that only base calls that differ to a designated reference sequence need to be stored.
+CARM format is described in detail at https://www.ebi.ac.uk/ena/software/cram-toolkit
+* FASTQ: FASTQ format is a text-based format for storing both a biological sequence and its corresponding quality scores. Both the sequence letter and quality score are each encoded with a single ASCII character for brevity.
+FASTQ format is described in detail at https://en.wikipedia.org/wiki/FASTQ_format
