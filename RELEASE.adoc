@@ -6,7 +6,7 @@ This pages contains links to release notes for DSP's File content validator serv
 [[section]]
 == v0.1.3 Release Notes
 
-This brand new file content validator application is a replacement of our previous file content validator that was using 3rd party applications to validate the content's correctness of the uploaded raw data files.
+This brand new file content validator application is a replacement of our previous file content validator that was using 3rd party applications to validate the content correctness of the uploaded raw data files.
 
 This current validator uses the following ENA libraries for validation:
 
